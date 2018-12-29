@@ -18,7 +18,7 @@ LABEL about.tags="Genomics"
 ################## MAINTAINER ######################
 MAINTAINER Brian Yee <brian.alan.yee@gmail.com>
 
-RUN conda install samtools=1.5
+RUN conda install -c bioconda samtools=1.5
 
 WORKDIR /data/
 
