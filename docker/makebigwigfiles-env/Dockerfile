@@ -18,13 +18,14 @@ LABEL about.tags="Genomics"
 ################## MAINTAINER ######################
 MAINTAINER Brian Yee <brian.alan.yee@gmail.com>
 
-RUN conda install -y -c bioconda \
+RUN conda install -y -c bioconda -c anaconda \
     python=2.7 \
     ucsc-bedgraphtobigwig=357 \
     ucsc-bedsort=357 \
     samtools=1.5 \
     bedtools=2.26 \
-    pybedtools=0.7.10
+    pybedtools=0.7.10 \
+    cryptography
 
 RUN mkdir -p /opt && \
     cd /opt && \
