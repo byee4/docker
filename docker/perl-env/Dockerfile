@@ -42,7 +42,7 @@ RUN /perl5/bin/perlbrew install-cpanm
 
 RUN /perl5/bin/perlbrew switch perl-5.10.1
 
-RUN conda install -y -c r r=3.3.2 && \
+RUN conda install -y -c bioconda -c r -c anaconda samtools=1.6 openssl=1.0 r=3.3.2 && \
     cpanm install Statistics::Basic && \
     cpanm install Statistics::Distributions && \
     ln -s /opt/conda/lib/libreadline.so.7 /opt/conda/lib/libreadline.so.6 && \
