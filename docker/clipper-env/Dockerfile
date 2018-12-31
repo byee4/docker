@@ -40,6 +40,4 @@ RUN git clone git://github.com/YeoLab/clipper.git && \
     cd clipper && \
     python setup.py install
 
-WORKDIR /data/
-
 CMD ["clipper"]

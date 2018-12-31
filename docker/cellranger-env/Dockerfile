@@ -6,11 +6,11 @@ FROM continuumio/miniconda:latest
 
 LABEL base_image="continuumio/miniconda:latest"
 LABEL version="1"
-LABEL software="CLIPper"
-LABEL software.version="0.2.0"
-LABEL about.summary="A tool to detect CLIP-seq peaks."
-LABEL about.home="https://github.com/YeoLab/clipper/"
-LABEL about.documentation="https://github.com/YeoLab/clipper/wiki/CLIPper-Home"
+LABEL software="cellranger"
+LABEL software.version="3.0.1"
+LABEL about.summary=""
+LABEL about.home="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/installation"
+LABEL about.documentation=""
 LABEL about.license_file=""
 LABEL about.license=""
 LABEL about.tags="Genomics"
@@ -19,27 +19,16 @@ LABEL about.tags="Genomics"
 MAINTAINER Brian Yee <brian.alan.yee@gmail.com>
 
 RUN apt-get update
-RUN apt-get upgrade --yes
+RUN apt-get install -y build-essential
 
-RUN apt-get install -y g++
+RUN cd /opt && \
+    wget -O cellranger-3.0.1.tar.gz "http://cf.10xgenomics.com/releases/cell-exp/cellranger-3.0.1.tar.gz?Expires=1546250924&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cDovL2NmLjEweGdlbm9taWNzLmNvbS9yZWxlYXNlcy9jZWxsLWV4cC9jZWxscmFuZ2VyLTMuMC4xLnRhci5neiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTU0NjI1MDkyNH19fV19&Signature=fo5Uk0qTSK~VbAp6EJDUM7BWJFlpjBuE5ikiKpylyQlZkIb8aPM5D8AACggVpZ23DE2MzYVU1igPkrWz1p~JAv4qLEdPDcx8He5Jy5Buufj8U9iFYXeH~p3GYdjhdWUDbXdmpnFq35EiR-ArfWDzpj45DGiexOsMu-xNrAPH9oN-NAY37OvBb8aOr7Ozzkj~t4Q11reClvpURKP7iu-IN4Q9w8W5CLAsU81EcsNPv4pRPGCk3YdaR5C9XM-TtIkFW9CGbyQFV0vL1pT5ZRSBINdcV2OJnNPo~Lv43h3vJoL0SA8tzr~Oa4HMaN4snhs4TVZR0~ZKfHXzreAyyy49ig__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA" && \
+    tar -xzvf cellranger-3.0.1.tar.gz
 
-RUN conda install -y -c bioconda \
-python=2.7 \
-pysam=0.12.0.1 \
-numpy=1.10.2 \
-scipy=0.16.0 \
-matplotlib=1.5.1 \
-pybedtools=0.7.10 \
-scikit-learn=0.17.1 \
-HTSeq=0.9.1 \
-cython=0.28.2 \
-libgfortran=1
+RUN cd /opt && \
+    wget http://cf.10xgenomics.com/supp/cell-exp/refdata-cellranger-GRCh38-3.0.0.tar.gz && \
+    tar -xzvf refdata-cellranger-GRCh38-3.0.0.tar.gz
 
+ENV PATH="PATH=/opt/cellranger-3.0.1:$PATH"
 
-RUN git clone git://github.com/YeoLab/clipper.git && \
-    cd clipper && \
-    python setup.py install
-
-WORKDIR /data/
-
-CMD ["clipper"]
+CMD ["cellranger"]

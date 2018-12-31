@@ -20,6 +20,5 @@ MAINTAINER Brian Yee <brian.alan.yee@gmail.com>
 
 RUN conda install -y -c anaconda -c bioconda cutadapt=1.14 cryptography
 
-WORKDIR /data/
 
 CMD ["cutadapt"]

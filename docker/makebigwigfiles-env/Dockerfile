@@ -37,6 +37,4 @@ RUN echo $PATH
 
 ENV PATH /opt/makebigwigfiles:$PATH
 
-WORKDIR /data/
-
 CMD ["makebigwigfiles"]

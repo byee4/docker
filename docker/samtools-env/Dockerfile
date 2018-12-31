@@ -20,6 +20,4 @@ MAINTAINER Brian Yee <brian.alan.yee@gmail.com>
 
 RUN conda install -c bioconda -c anaconda samtools=1.6 openssl=1.0
 
-WORKDIR /data/
-
 CMD ["samtools"]

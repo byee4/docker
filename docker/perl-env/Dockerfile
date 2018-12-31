@@ -54,6 +54,4 @@ RUN cd /opt && \
 
 ENV PATH="/opt/merge_peaks/bin/perl:${PATH}"
 
-WORKDIR /data/
-
 CMD ["overlap_peakfi_with_bam.pl"]

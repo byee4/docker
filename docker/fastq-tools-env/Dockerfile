@@ -20,6 +20,5 @@ MAINTAINER Brian Yee <brian.alan.yee@gmail.com>
 
 RUN conda install -y -c bioconda fastq-tools=0.8
 
-WORKDIR /data/
 
 CMD ["fastq-sort"]
