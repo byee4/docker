@@ -6,10 +6,10 @@ FROM continuumio/miniconda:latest
 
 LABEL base_image="continuumio/miniconda:latest"
 LABEL version="1"
-LABEL software="eCLIP Input Normalization"
-LABEL software.version="0.0.1"
-LABEL about.summary="Perl scripts for normalizing IP over size-matched input"
-LABEL about.home="https://github.com/yeolab"
+LABEL software="R"
+LABEL software.version="3.5.2"
+LABEL about.summary="R-base with Jupyter and irkernel installed."
+LABEL about.home="https://github.com/byee4/docker"
 LABEL about.documentation=""
 LABEL about.license_file=""
 LABEL about.license=""
@@ -37,3 +37,5 @@ RUN conda create -y -c r -c bioconda -c conda-forge \
 
 RUN Rscript -e 'install.packages("devtools", repos="https://cran.rstudio.com")'
 RUN Rscript -e 'devtools::install_github("IRkernel/IRkernel")'
+ENV PATH /opt/conda/envs/r-3.5.2/bin:$PATH
+RUN Rscript -e 'IRkernel::installspec(name = "R-3.5.2", displayname = "R-3.5.2", user = FALSE)'
