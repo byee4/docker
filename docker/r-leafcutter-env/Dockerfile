@@ -28,10 +28,10 @@ RUN conda create -y -c r -c bioconda -c conda-forge \
 ENV PATH /opt/conda/envs/r-leafcutter/bin:$PATH
 
 RUN Rscript -e 'install.packages("devtools", repos="https://cran.rstudio.com")'
-RUN Rscript -e 'install.packages("DT", repos="https://cran.rstudio.com")'
-RUN Rscript -e 'install.packages("optparse", repos="https://cran.rstudio.com")'
 RUN Rscript -e 'remove.packages(c("curl","httr"))' # https://github.com/Microsoft/microsoft-r-open/issues/63
 ENV CURL_CA_BUNDLE /opt/conda/envs/r-leafcutter/lib/R/lib/microsoft-r-cacert.pem
 RUN Rscript -e 'devtools::install_github("IRkernel/IRkernel")'
 RUN Rscript -e 'devtools::install_github("davidaknowles/leafcutter/leafcutter")'
 RUN Rscript -e 'IRkernel::installspec(name = "R-leafcutter", displayname = "R-leafcutter", user = FALSE)'
+RUN Rscript -e 'install.packages("optparse", repos="https://cran.rstudio.com")'
+RUN Rscript -e 'install.packages("DT", repos="https://cran.rstudio.com")'
