@@ -9,10 +9,10 @@ LABEL version="1"
 LABEL software="R"
 LABEL software.version="3.5.1"
 LABEL about.summary="R-Seurat + jupyter irkernel"
-LABEL about.home="https://github.com/byee4/docker"
-LABEL about.documentation=""
+LABEL about.home="https://github.com/satijalab/seurat"
+LABEL about.documentation="https://satijalab.org/seurat/"
 LABEL about.license_file=""
-LABEL about.license=""
+LABEL about.license="GPL 3.0"
 LABEL about.tags="Genomics"
 
 ################## MAINTAINER ######################
