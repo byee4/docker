@@ -33,7 +33,7 @@ ENV CURL_CA_BUNDLE /opt/conda/envs/r-singleCellNet/lib/R/lib/microsoft-r-cacert.
 RUN Rscript -e 'devtools::install_github("IRkernel/IRkernel")'
 RUN Rscript -e 'devtools::install_github("thomasp85/patchwork")'
 RUN Rscript -e 'devtools::install_github("ctlab/fgsea")'
-RUN Rscript -e 'devtools::install_github("pcahan1/singleCellNet", ref="v0.2.0")'
+RUN Rscript -e 'devtools::install_github("skannan4/singleCellNet", ref="master")'
 RUN apt-get install -y libhdf5-dev
 RUN Rscript -e 'devtools::install_github("hhoeflin/hdf5r")'
 RUN Rscript -e 'devtools::install_github("mojaveazure/loomR", ref = "develop")'
