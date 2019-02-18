@@ -24,7 +24,7 @@ RUN apt-get install -y liblzma-dev libblas-dev libreadline-dev libbz2-dev libpcr
 RUN apt-get install -y default-jdk texlive-fonts-extra xorg-dev
 RUN apt-get install -y libssh2-1-dev
 RUN conda install -y -c r -c bioconda -c conda-forge \
-    python=2.7 jupyter r=3.5.1 r-irkernel libjpeg-turbo=1.5 zeromq=4.2.5 readline=6.2
+    python=2.7 jupyter jupyterlab r=3.5.1 r-irkernel libjpeg-turbo=1.5 zeromq=4.2.5 readline=6.2
 ENV PATH /opt/conda/bin:$PATH
 
 RUN Rscript -e 'install.packages("devtools", repos="https://cran.rstudio.com")'
