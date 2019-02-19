@@ -22,7 +22,7 @@ RUN Rscript -e 'install.packages(c("curl","httr"))' # https://github.com/Microso
 RUN apt-get install -y libc6-dev
 RUN apt-get install -y libhdf5-dev && Rscript -e 'install.packages("hdf5r")'
 RUN Rscript -e 'devtools::install_version("stringr", version = "1.2.0")'
-RUN Rscript -e 'install.packages("https://cran.r-project.org/src/contrib/Archive/VGAM/VGAM_1.0-6.tar.gz",repos=N$
+RUN Rscript -e 'install.packages("https://cran.r-project.org/src/contrib/Archive/VGAM/VGAM_1.0-6.tar.gz",repos=NULL)'
 # RUN Rscript -e 'devtools::install_version("VGAM", version = "1.0-6")'
 RUN Rscript -e 'devtools::install_github("cole-trapnell-lab/monocle-release@master")'
 RUN Rscript -e 'source("http://bioconductor.org/biocLite.R");'
