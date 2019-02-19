@@ -12,7 +12,7 @@ LABEL about.summary="R-monocle + jupyter irkernel"
 LABEL about.home="http://cole-trapnell-lab.github.io/monocle-release"
 LABEL about.documentation="http://cole-trapnell-lab.github.io/monocle-release"
 LABEL about.license_file=""
-LABEL about.license="GPL 3.0"
+LABEL about.license="Artistic-2.0"
 LABEL about.tags="Genomics"
 
 ################## MAINTAINER ######################
