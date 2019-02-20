@@ -1,3 +1,4 @@
+
 ################## BASE IMAGE ######################
 
 FROM brianyee/r-jupyter
@@ -19,4 +20,11 @@ LABEL about.tags="Genomics"
 MAINTAINER Brian Yee <brian.alan.yee@gmail.com>
 
 RUN Rscript -e 'install.packages("BiocManager");BiocManager::install("DESeq2", version = "3.8")'
+RUN Rscript -e 'install.packages("BiocManager");BiocManager::install("vsn", version = "3.8")'
+RUN Rscript -e 'install.packages("BiocManager");BiocManager::install("tximport", version = "3.8")'
+RUN Rscript -e 'install.packages("BiocManager");BiocManager::install("tximportData", version = "3.8")'
+RUN Rscript -e 'install.packages("BiocManager");BiocManager::install("pasilla", version = "3.8")'
+RUN Rscript -e 'install.packages("BiocManager");BiocManager::install("airway", version = "3.8")'
+RUN Rscript -e 'install.packages("pheatmap")'
+RUN Rscript -e 'install.packages("readr")'
 RUN Rscript -e 'IRkernel::installspec(name = "R-deseq2", displayname = "R-DESeq2", user = FALSE)'
