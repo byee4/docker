@@ -32,5 +32,6 @@ RUN Rscript -e 'install.packages("BiocManager");BiocManager::install("Annotation
 RUN Rscript -e 'install.packages("BiocManager");BiocManager::install("preprocessCore", version = "3.8")'
 RUN Rscript -e 'install.packages("WGCNA")'
 RUN Rscript -e 'install.packages("BiocManager");BiocManager::install("rsvd", version = "3.8")'
+RUN Rscript -e 'devtools::install_version(package = "Seurat", version = package_version("2.3.4"))'
+RUN Rscript -e 'devtools::install_github("Arthurhe/Lightbulb")'
 RUN Rscript -e 'IRkernel::installspec(name = "R-arthur", displayname = "R-arthur", user = FALSE)'
-
