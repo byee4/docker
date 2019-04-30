@@ -18,29 +18,11 @@ LABEL about.tags="Genomics"
 ################## MAINTAINER ######################
 MAINTAINER Brian Yee <brian.alan.yee@gmail.com>
 
-ENV NB_USER brian
-ENV NB_UID 1000
-ENV HOME /home/${NB_USER}
-
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
-
 RUN apt-get update
 RUN conda update conda;
 RUN conda install -c conda-forge -c bioconda python=3.6 jupyter ipykernel && \
     pip install scanpy==1.4.1 && \
     python3 -m ipykernel install --name scanpy141 --display-name "scanpy-1.4.1"
-
-# Make sure the contents of our repo are in ${HOME}
-COPY . ${HOME}
-USER root
-RUN chown -R ${NB_UID} ${HOME}
-RUN chown -R ${NB_USER}:${NB_UID} /opt/conda/
-USER ${NB_USER}
-
-WORKDIR /home/${NB_USER}
 
 CMD ["python"]
 
