@@ -7,7 +7,7 @@ FROM continuumio/miniconda3:latest
 LABEL base_image="continuumio/miniconda:latest"
 LABEL version="1"
 LABEL software="scanpy"
-LABEL software.version="1.4"
+LABEL software.version="1.4.1"
 LABEL about.summary=""
 LABEL about.home=""
 LABEL about.documentation="https://github.com/theislab/scanpy"
@@ -29,8 +29,9 @@ RUN adduser --disabled-password \
 
 RUN apt-get update
 RUN conda update conda;
-RUN conda install -c conda-forge -c bioconda python=3.6 scanpy jupyter ipykernel && \
-    python3 -m ipykernel install --name scanpy --display-name "scanpy"
+RUN conda install -c conda-forge -c bioconda python=3.6 jupyter ipykernel && \
+    pip install scanpy==1.4.1 && \
+    python3 -m ipykernel install --name scanpy141 --display-name "scanpy-1.4.1"
 
 # Make sure the contents of our repo are in ${HOME}
 COPY . ${HOME}
