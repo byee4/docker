@@ -20,7 +20,7 @@ MAINTAINER Brian Yee <brian.alan.yee@gmail.com>
 
 RUN apt-get update
 RUN conda update conda;
-RUN conda install -c conda-forge -c bioconda python=3.6 jupyter ipykernel && \
+RUN conda install -c conda-forge -c bioconda python=3.6 python-igraph jupyter ipykernel && \
     pip install scanpy==1.4.1 && \
     python3 -m ipykernel install --name scanpy141 --display-name "scanpy-1.4.1"
 
