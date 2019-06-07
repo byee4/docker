@@ -24,6 +24,7 @@ RUN apt-get install -y libc6-dev
 RUN apt-get install -y libhdf5-dev && Rscript -e 'install.packages("hdf5r")'
 RUN Rscript -e 'devtools::install_version("stringr", version = "1.2.0")'
 RUN conda install -y -c conda-forge zlib && export LDFLAGS="-L/opt/conda/lib/" && Rscript -e 'install.packages("BiocManager");BiocManager::install("ShortRead")'
+RUN Rscript -e 'devtools::install_version("amap", version ="0.8-16")'
 RUN Rscript -e 'install.packages("BiocManager");BiocManager::install("DiffBind")'
 RUN Rscript -e 'remove.packages(c("curl","httr"))' # https://github.com/Microsoft/microsoft-r-open/issues/63
 RUN Rscript -e 'IRkernel::installspec(name = "R-DiffBind", displayname = "R-DiffBind", user = FALSE)'
